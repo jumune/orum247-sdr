@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/juan.muro/Downloads/agente-sdr-orum247_8.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agente SDR — ORUM247</title>
+<link href="./Agente SDR — ORUM247_files/css2" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --q-dark: #374754;
+  --q-dark-hover: #2D3A45;
+  --q-dark-deep: #1A1F24;
+  --q-orange: #F87936;
+  --q-orange-soft: #FBA36B;
+  --q-white: #FFFFFF;
+  --q-gray-light: #D8D8D8;
+  --q-gray-mid: #8B8B8B;
+  --q-surface: #F4F5F6;
+  --q-border: #E0E3E6;
+  --q-success: #1D9E75;
+  --q-success-bg: #E1F5EE;
+  --q-warning: #BA7517;
+  --q-warning-bg: #FAEEDA;
+  --q-danger: #A32D2D;
+  --q-danger-bg: #FCEBEB;
+  --q-info: #185FA5;
+  --q-info-bg: #E6F1FB;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--q-surface);
+  color: var(--q-dark);
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+/* HEADER */
+.app-header {
+  background: var(--q-dark);
+  padding: 0 32px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid var(--q-orange);
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--q-orange);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--q-white);
+  letter-spacing: -1px;
+}
+
+.app-logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--q-white);
+  letter-spacing: 0.02em;
+}
+
+.app-logo-sub {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--q-gray-light);
+  letter-spacing: 0.05em;
+}
+
+.header-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--q-gray-light);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.nav-btn:hover { background: var(--q-dark-hover); color: var(--q-white); }
+.nav-btn.active { background: var(--q-orange); color: var(--q-white); border-color: var(--q-orange); font-weight: 600; }
+
+/* MAIN */
+.app-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* CARDS */
+.card {
+  background: var(--q-white);
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--q-gray-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--q-border);
+}
+
+/* FORMS */
+.field-group { margin-bottom: 12px; }
+.field-label { font-size: 12px; color: var(--q-gray-mid); margin-bottom: 5px; display: block; font-weight: 600; }
+
+input[type=text], input[type=password], input[type=email], select, textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius-sm);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: var(--q-dark);
+  background: var(--q-white);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus, select:focus, textarea:focus { border-color: var(--q-orange); }
+textarea { resize: vertical; min-height: 80px; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--q-orange);
+  color: var(--q-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover { background: #e0682a; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--q-dark);
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover { border-color: var(--q-gray-mid); background: var(--q-surface); }
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: 'Open Sans', sans-serif;
+  background: transparent;
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--q-gray-mid);
+  transition: all 0.15s;
+}
+
+.btn-sm:hover { border-color: var(--q-orange); color: var(--q-orange); }
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.badge-interested { background: var(--q-success-bg); color: var(--q-success); }
+.badge-objection { background: var(--q-warning-bg); color: var(--q-warning); }
+.badge-info-req { background: var(--q-info-bg); color: var(--q-info); }
+.badge-referral { background: #EDE9FE; color: #5B21B6; }
+.badge-noint { background: var(--q-danger-bg); color: var(--q-danger); }
+
+/* ALERTS */
+.alert {
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 3px solid;
+}
+
+.alert-meeting { background: var(--q-success-bg); color: #0F5C43; border-color: var(--q-success); }
+.alert-odoo { background: var(--q-info-bg); color: var(--q-info); border-color: var(--q-info); }
+.alert-warn { background: var(--q-warning-bg); color: var(--q-warning); border-color: var(--q-warning); }
+
+/* RESULT BOX */
+.result-box {
+  background: var(--q-surface);
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  color: var(--q-dark);
+  position: relative;
+}
+
+/* EMAIL TABS */
+.email-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.email-tab {
+  padding: 5px 14px;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  border: 1px solid var(--q-border);
+  border-radius: 20px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--q-gray-mid);
+  transition: all 0.15s;
+}
+
+.email-tab.active { background: var(--q-dark); color: var(--q-white); border-color: var(--q-dark); }
+.email-tab:hover:not(.active) { border-color: var(--q-orange); color: var(--q-orange); }
+
+/* SCORE */
+.score-display {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+/* METRICS */
+.metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.metric-card {
+  background: var(--q-dark);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.metric-val { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 26px; color: var(--q-orange); }
+.metric-lbl { font-size: 11px; color: var(--q-gray-light); margin-top: 3px; }
+
+/* LOADING */
+.loading-wrap { display: flex; align-items: center; gap: 12px; padding: 24px 0; color: var(--q-gray-mid); font-size: 13px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--q-orange); animation: pulse 1.2s ease-in-out infinite; }
+.dot:nth-child(2){animation-delay:.2s} .dot:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,80%,100%{opacity:.2;transform:scale(0.9)}40%{opacity:1;transform:scale(1)}}
+
+/* DIVIDER */
+hr { border: none; border-top: 1px solid var(--q-border); margin: 18px 0; }
+
+/* REPORT */
+.report-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--q-border);
+  font-size: 13px;
+}
+
+.report-row:last-child { border-bottom: none; }
+.report-emoji { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
+
+/* API KEY ROW */
+.key-row { display: flex; gap: 8px; align-items: center; }
+.key-row input { flex: 1; }
+.key-tag {
+  font-size: 11px;
+  padding: 6px 10px;
+  background: var(--q-surface);
+  border: 1px solid var(--q-border);
+  border-radius: var(--radius-sm);
+  color: var(--q-gray-mid);
+  white-space: nowrap;
+}
+
+/* PAGE TITLE */
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--q-dark);
+  margin-bottom: 4px;
+}
+
+.page-sub {
+  font-size: 13px;
+  color: var(--q-gray-mid);
+  margin-bottom: 24px;
+}
+
+.orange-bar {
+  width: 40px;
+  height: 3px;
+  background: var(--q-orange);
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+/* COPY ROW */
+.copy-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.copy-row span { font-size: 12px; color: var(--q-gray-mid); }
+
+/* CONFIG saved */
+.saved-msg { font-size: 13px; color: var(--q-success); margin-top: 8px; font-weight: 600; }
+
+/* EMAIL SUBJECT */
+.email-subject { font-size: 12px; color: var(--q-gray-mid); margin-bottom: 8px; }
+.email-subject strong { color: var(--q-dark); }
+
+/* FOOTER */
+.app-footer {
+  text-align: center;
+  padding: 20px 0 32px;
+  font-size: 11px;
+  color: var(--q-gray-mid);
+}
+
+.app-footer span { color: var(--q-orange); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo">
+    <div class="logo-mark">O</div>
+    <div>
+      <div class="app-logo-text">ORUM247</div>
+      <div class="app-logo-sub">AGENTE SDR</div>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <button class="nav-btn active" id="navbtn-prospecting" onclick="showPage(&#39;prospecting&#39;)">Prospección</button>
+    <button class="nav-btn" id="navbtn-sequences" onclick="showPage(&#39;sequences&#39;)">Secuencias</button>
+    <button class="nav-btn" id="navbtn-replies" onclick="showPage(&#39;replies&#39;)">Reply Handler</button>
+    <button class="nav-btn" id="navbtn-report" onclick="showPage(&#39;report&#39;)">Reporte del día</button>
+    <button class="nav-btn" id="navbtn-config" onclick="showPage(&#39;config&#39;)">Configuración</button>
+  </nav>
+</header>
+
+<main class="app-main">
+
+  <!-- ==================== PÁGINA: PROSPECCIÓN ==================== -->
+  <div id="page-prospecting">
+    <h1 class="page-title">Prospección</h1>
+    <p class="page-sub">Importa prospects desde Apollo CSV u Odoo → carga directamente en secuencias</p>
+    <div class="orange-bar"></div>
+
+    <!-- MODO TABS -->
+    <div style="display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--q-border);padding-bottom:10px;">
+      <button class="email-tab active" id="ptab-csv" onclick="switchProspTab(&#39;csv&#39;)">Importar CSV Apollo</button>
+      <button class="email-tab" id="ptab-odoo" onclick="switchProspTab(&#39;odoo&#39;)">Importar desde Odoo</button>
+      <button class="email-tab" id="ptab-auto" onclick="switchProspTab(&#39;auto&#39;)">Apollo automático</button>
+    </div>
+
+    <!-- TAB CSV -->
+    <div id="prosp-csv">
+      <div class="card">
+        <div class="card-title">Cómo exportar desde Apollo</div>
+        <ol style="font-size:13px;color:var(--q-gray-mid);line-height:2;padding-left:18px;">
+          <li>Entra en <strong style="color:var(--q-dark);">apollo.io</strong> → People</li>
+          <li>Aplica tus filtros: país España, cargo CEO/CTO, +20 empleados</li>
+          <li>Selecciona los contactos → <strong style="color:var(--q-dark);">Export → CSV</strong></li>
+          <li>Sube el archivo aquí abajo</li>
+        </ol>
+      </div>
+
+      <div class="card" style="border:2px dashed var(--q-border);text-align:center;padding:32px;cursor:pointer;" id="csv-dropzone" onclick="document.getElementById(&#39;csv-file&#39;).click()">
+        <div style="font-size:32px;margin-bottom:8px;">📄</div>
+        <p style="font-size:14px;font-weight:600;color:var(--q-dark);margin-bottom:4px;">Arrastra el CSV aquí o haz clic para seleccionar</p>
+        <p style="font-size:12px;color:var(--q-gray-mid);">Formato Apollo estándar — columnas: First Name, Last Name, Title, Company, Email, Employees, Industry</p>
+        <input type="file" id="csv-file" accept=".csv" style="display:none;" onchange="handleCSV(this)">
+      </div>
+
+      <div id="csv-preview" style="display:none;"></div>
+    </div>
+
+    <!-- TAB ODOO -->
+    <div id="prosp-odoo" style="display:none;">
+      <div class="card" style="background:var(--q-warning-bg);border-color:#FAC775;">
+        <p style="font-size:13px;color:var(--q-warning);line-height:1.6;">
+          <strong>Pendiente de acceso CRM</strong> — En cuanto el administrador de tu Odoo te dé acceso al módulo CRM, este módulo se activará automáticamente y podrás importar leads directamente desde tu pipeline.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cómo exportar desde Odoo mientras tanto</div>
+        <ol style="font-size:13px;color:var(--q-gray-mid);line-height:2;padding-left:18px;">
+          <li>Introduce tu Odoo API key en <strong style="color:var(--q-dark);">Configuración</strong></li>
+          <li>Aplica los filtros que quieras (sector, ciudad, estado del lead)</li>
+          <li>El agente carga los leads directamente desde tu CRM</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Filtros</div>
+        <div class="grid2">
+          <div class="field-group">
+            <label class="field-label">Estado del lead</label>
+            <select id="odoo_stage">
+              <option value="">Todos</option>
+              <option value="new">Nuevo</option>
+              <option value="qualified">Cualificado</option>
+              <option value="proposition">Propuesta</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Nº de resultados</label>
+            <select id="odoo_limit">
+              <option value="10">10 leads</option>
+              <option value="25">25 leads</option>
+              <option value="50">50 leads</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Sector (opcional)</label>
+            <input type="text" id="odoo_industry" placeholder="Ej. tecnología, retail...">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Ciudad (opcional)</label>
+            <input type="text" id="odoo_city" placeholder="Ej. Madrid, Barcelona...">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="loadOdooLeads()">Cargar leads desde Odoo CRM →</button>
+
+      <div id="odoo-loading" style="display:none;">
+        <div class="loading-wrap">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <span>Consultando Odoo CRM...</span>
+        </div>
+      </div>
+
+      <div id="odoo-result" style="display:none;"></div>
+    </div>
+
+    <!-- TAB AUTO (Apollo API - desactivado por CORS) -->
+    <div id="prosp-auto" style="display:none;">
+      <div class="card" style="background:var(--q-danger-bg);border-color:#F09595;">
+        <p style="font-size:13px;color:var(--q-danger);line-height:1.6;">
+          <strong>No disponible desde navegador</strong> — Apollo bloquea llamadas directas desde archivos HTML por seguridad (política CORS). Para activar la prospección automática necesitas un servidor intermediario (n8n, Make, o similar). Por ahora usa la importación CSV.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-title">Cómo activarlo en el futuro</div>
+        <ol style="font-size:13px;color:var(--q-gray-mid);line-height:2;padding-left:18px;">
+          <li>Instala <strong style="color:var(--q-dark);">n8n</strong> (gratuito, open source)</li>
+          <li>Crea un workflow: Apollo → ORUM247 → Odoo</li>
+          <li>El agente recibirá prospects automáticamente sin intervención manual</li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="prosp-loading" style="display:none;">
+      <div class="loading-wrap">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span id="prosp-loading-msg">Procesando...</span>
+      </div>
+    </div>
+
+    <div id="prosp-result" style="display:none;"></div>
+  </div>
+
+  <!-- ==================== PÁGINA: SECUENCIAS ==================== -->
+
+  <div id="page-sequences" style="display:none;">
+    <h1 class="page-title">Generador de secuencias</h1>
+    <p class="page-sub">Introduce los datos del prospect → genera 5 emails listos para enviar</p>
+    <div class="orange-bar"></div>
+
+    <div id="seq-form">
+      <div class="card">
+        <div class="card-title">Datos de la empresa — desde Clay / Apollo / Odoo</div>
+        <div class="grid2">
+          <div class="field-group">
+            <label class="field-label">Nombre de la empresa *</label>
+            <input type="text" id="s_company" placeholder="Ej. Grupo Ferrer">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Sector</label>
+            <input type="text" id="s_sector" placeholder="Ej. Distribución, Retail, Industria">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Facturación estimada</label>
+            <input type="text" id="s_revenue" placeholder="Ej. 3M€ – 10M€">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Nº empleados</label>
+            <input type="text" id="s_employees" placeholder="Ej. 45">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Crecimiento reciente (Clay)</label>
+            <input type="text" id="s_growth" placeholder="Ej. +18% plantilla en 12 meses">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Tech stack detectado (Clay)</label>
+            <input type="text" id="s_tech" placeholder="Ej. Shopify, Excel, sin CRM">
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Noticias / señales recientes (Clay)</label>
+          <textarea id="s_news" placeholder="Ej. Abrieron nueva delegación en Barcelona en enero. Están buscando Director Comercial."></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Datos del contacto</div>
+        <div class="grid3">
+          <div class="field-group">
+            <label class="field-label">Nombre *</label>
+            <input type="text" id="s_fname" placeholder="Ej. Carlos">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Apellido</label>
+            <input type="text" id="s_lname" placeholder="Ej. Martínez">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Cargo</label>
+            <select id="s_role">
+              <option value="CEO">CEO</option>
+              <option value="CTO">CTO</option>
+              <option value="COO">COO</option>
+              <option value="Director General">Director General</option>
+              <option value="Fundador">Fundador/a</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Ángulo de entrada</div>
+        <div class="grid2">
+          <div class="field-group">
+            <label class="field-label">Servicio principal</label>
+            <select id="s_service">
+              <option value="CRM con Odoo (somos partner oficial en España)">CRM — Odoo (partner oficial)</option>
+              <option value="sitio web o e-commerce">Sitio web / e-commerce</option>
+              <option value="transformación digital">Transformación digital</option>
+              <option value="ERP con Odoo">ERP — Odoo</option>
+              <option value="videojuego corporativo o gamificación">Videojuego corporativo</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Tono de la secuencia</label>
+            <select id="s_tone">
+              <option value="directo y ejecutivo">Directo y ejecutivo</option>
+              <option value="consultivo y cercano">Consultivo y cercano</option>
+              <option value="challenger — provoca reflexión sobre el estado actual">Challenger</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="generateSequence()">Generar secuencia de 5 emails →</button>
+    </div>
+
+    <div id="seq-loading" style="display:none;">
+      <div class="loading-wrap">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span id="seq-loading-msg">Analizando el prospect...</span>
+      </div>
+    </div>
+
+    <div id="seq-result" style="display:none;"></div>
+  </div>
+
+  <!-- ==================== PÁGINA: REPLY HANDLER ==================== -->
+  <div id="page-replies" style="display:none;">
+    <h1 class="page-title">Reply Handler</h1>
+    <p class="page-sub">Pega la respuesta recibida → el agente la categoriza, genera la réplica y actualiza Odoo</p>
+    <div class="orange-bar"></div>
+
+    <div id="reply-form">
+      <div class="card">
+        <div class="card-title">Prospect</div>
+        <div class="grid2">
+          <div class="field-group">
+            <label class="field-label">Nombre completo *</label>
+            <input type="text" id="r_name" placeholder="Ej. Carlos Martínez">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Empresa *</label>
+            <input type="text" id="r_company" placeholder="Ej. Grupo Ferrer">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Email del prospect</label>
+            <input type="text" id="r_email" placeholder="carlos@grupoferrer.com">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Nº de email en la secuencia</label>
+            <select id="r_seq">
+              <option value="1">Email 1 — Primer contacto</option>
+              <option value="2">Email 2 — Follow-up 1</option>
+              <option value="3">Email 3 — Follow-up 2</option>
+              <option value="4">Email 4 — Follow-up 3</option>
+              <option value="5">Email 5 — Breakup</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Respuesta recibida</div>
+        <div class="field-group">
+          <textarea id="r_reply" rows="6" placeholder="Pega aquí el texto exacto de la respuesta recibida..."></textarea>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="handleReply()">Analizar respuesta y generar réplica →</button>
+    </div>
+
+    <div id="reply-loading" style="display:none;">
+      <div class="loading-wrap">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span id="reply-loading-msg">Analizando respuesta...</span>
+      </div>
+    </div>
+
+    <div id="reply-result" style="display:none;"></div>
+  </div>
+
+  <!-- ==================== PÁGINA: REPORTE ==================== -->
+  <div id="page-report" style="display:none;">
+    <h1 class="page-title">Reporte del día</h1>
+    <p class="page-sub">Resumen de actividad, valoración de respuestas recibidas y email listo para enviarte</p>
+    <div class="orange-bar"></div>
+
+    <div id="report-intro">
+      <div class="card" style="text-align:center; padding: 32px;">
+        <p style="font-size:14px;color:var(--q-gray-mid);margin-bottom:20px;">Genera el reporte de cierre de jornada con toda la actividad registrada en esta sesión.</p>
+        <button class="btn-primary" style="max-width:300px;margin:0 auto;" onclick="generateReport()">Generar reporte del día →</button>
+      </div>
+    </div>
+
+    <div id="report-loading" style="display:none;">
+      <div class="loading-wrap">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <span>Procesando actividad del día...</span>
+      </div>
+    </div>
+
+    <div id="report-result" style="display:none;"></div>
+  </div>
+
+  <!-- ==================== PÁGINA: CONFIGURACIÓN ==================== -->
+  <div id="page-config" style="display:none;">
+    <h1 class="page-title">Configuración</h1>
+    <p class="page-sub">Las API keys solo se guardan en memoria durante esta sesión del navegador</p>
+    <div class="orange-bar"></div>
+
+    <div class="card">
+      <div class="card-title">API Keys</div>
+      <div class="field-group">
+        <label class="field-label">Claude API key</label>
+        <div class="key-row">
+          <input type="password" id="cfg_claude" placeholder="sk-ant-api...">
+          <span class="key-tag">🔒 solo sesión</span>
+        </div>
+        <p style="font-size:11px;color:var(--q-gray-mid);margin-top:4px;">Obtenla en console.anthropic.com → API Keys</p>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Apollo API key</label>
+        <div class="key-row">
+          <input type="password" id="cfg_apollo" placeholder="Tu API key de Apollo..." style="flex:1;">
+          <span class="key-tag">🔒 solo sesión</span>
+        </div>
+        <p style="font-size:11px;color:var(--q-gray-mid);margin-top:4px;">apollo.io → Settings → Integrations → API</p>
+      </div>
+
+        <div class="key-row">
+          <input type="password" id="cfg_odoo_key" placeholder="Tu clave de Odoo...">
+          <span class="key-tag">🔒 solo sesión</span>
+        </div>
+        <p style="font-size:11px;color:var(--q-gray-mid);margin-top:4px;">Ajustes → Mi perfil → Seguridad → Claves API</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Conexión Odoo</div>
+      <div class="grid2">
+        <div class="field-group">
+          <label class="field-label">URL de tu instancia</label>
+          <input type="text" id="cfg_odoo_url" value="https://infinityapps.odoo.com">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Email de usuario Odoo</label>
+          <input type="text" id="cfg_odoo_user" placeholder="tu@email.com">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Preferencias</div>
+      <div class="grid2">
+        <div class="field-group">
+          <label class="field-label">Tu email (avisos y reportes)</label>
+          <input type="text" id="cfg_myemail" value="juan@infinityapps.es">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Horario reuniones (hora España)</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select id="cfg_from" style="flex:1;">
+              <option value="13:00">13:00</option><option value="13:30">13:30</option>
+              <option value="14:00">14:00</option><option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+            </select>
+            <span style="color:var(--q-gray-mid);">—</span>
+            <select id="cfg_to" style="flex:1;">
+              <option value="17:00">17:00</option><option value="17:30">17:30</option>
+              <option value="18:00" selected="">18:00</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="saveConfig()">Guardar configuración</button>
+    <p id="cfg_saved" style="display:none;" class="saved-msg">✓ Configuración guardada para esta sesión</p>
+  
+
+</main>
+
+<footer class="app-footer">
+  <span>ORUM247</span> · Agente SDR · Uso interno · 2025
+</footer>
+
+<script>
+// ============================================================
+// ESTADO GLOBAL
+// ============================================================
+let cfg = {
+  claude: '', odoo_key: '', odoo_url: 'https://infinityapps.odoo.com',
+  odoo_user: '', myemail: 'juan@infinityapps.es',
+  slot_from: '13:00', slot_to: '18:00', apollo: ''
+};
+
+let sessionLog = [];
+
+// ============================================================
+// NAVEGACIÓN
+// ============================================================
+function showPage(id) {
+  ['prospecting','sequences','replies','report','config'].forEach(p => {
+    document.getElementById('page-' + p).style.display = p === id ? 'block' : 'none';
+    const btn = document.getElementById('navbtn-' + p);
+    if (btn) btn.classList.toggle('active', p === id);
+  });
+}
+
+// ============================================================
+// CONFIGURACIÓN
+// ============================================================
+function saveConfig() {
+  cfg.claude     = document.getElementById('cfg_claude').value.trim();
+  cfg.apollo     = document.getElementById('cfg_apollo').value.trim();
+  cfg.odoo_key   = document.getElementById('cfg_odoo_key').value.trim();
+  cfg.odoo_url   = document.getElementById('cfg_odoo_url').value.trim();
+  cfg.odoo_user  = document.getElementById('cfg_odoo_user').value.trim();
+  cfg.myemail    = document.getElementById('cfg_myemail').value.trim();
+  cfg.slot_from  = document.getElementById('cfg_from').value;
+  cfg.slot_to    = document.getElementById('cfg_to').value;
+  const msg = document.getElementById('cfg_saved');
+  msg.style.display = 'block';
+  setTimeout(() => msg.style.display = 'none', 3000);
+}
+
+// ============================================================
+// PROSPECCIÓN — TABS
+// ============================================================
+function switchProspTab(tab) {
+  ['csv','odoo','auto'].forEach(t => {
+    document.getElementById('prosp-' + t).style.display = t === tab ? 'block' : 'none';
+    document.getElementById('ptab-' + t).classList.toggle('active', t === tab);
+  });
+  document.getElementById('prosp-result').style.display = 'none';
+  document.getElementById('prosp-result').innerHTML = '';
+}
+
+// ============================================================
+// PROSPECCIÓN — IMPORTAR CSV DE APOLLO
+// ============================================================
+function handleCSV(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const text = e.target.result;
+    const people = parseApolloCSV(text);
+    if (!people.length) {
+      alert('No se encontraron contactos en el CSV. Verifica que es un export de Apollo en formato estándar.');
+      return;
+    }
+    window._prospectData = people;
+    renderProspects(people, people.length);
+  };
+  reader.readAsText(file);
+}
+
+function parseApolloCSV(text) {
+  const lines = text.split('\n').filter(l => l.trim());
+  if (lines.length < 2) return [];
+
+  const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toLowerCase());
+
+  const map = {
+    fname:    findCol(headers, ['first name','first_name','nombre']),
+    lname:    findCol(headers, ['last name','last_name','apellido']),
+    title:    findCol(headers, ['title','job title','cargo','position']),
+    company:  findCol(headers, ['company','organization','empresa','company name']),
+    email:    findCol(headers, ['email','email address','correo']),
+    employees:findCol(headers, ['employees','num employees','# employees','empleados','headcount']),
+    industry: findCol(headers, ['industry','sector','industria']),
+    city:     findCol(headers, ['city','ciudad','location']),
+    linkedin: findCol(headers, ['linkedin url','linkedin','person linkedin url'])
+  };
+
+  return lines.slice(1).map(line => {
+    const cols = parseCSVLine(line);
+    const get = idx => idx >= 0 ? (cols[idx] || '').replace(/"/g,'').trim() : '';
+    return {
+      first_name: get(map.fname),
+      last_name:  get(map.lname),
+      title:      get(map.title),
+      email:      get(map.email),
+      linkedin_url: get(map.linkedin),
+      organization: {
+        name: get(map.company),
+        industry: get(map.industry),
+        estimated_num_employees: get(map.employees)
+      },
+      city: get(map.city)
+    };
+  }).filter(p => p.first_name || p.organization?.name);
+}
+
+function findCol(headers, candidates) {
+  for (const c of candidates) {
+    const idx = headers.indexOf(c);
+    if (idx >= 0) return idx;
+  }
+  return -1;
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQuotes = !inQuotes; }
+    else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
+    else { current += ch; }
+  }
+  result.push(current);
+  return result;
+}
+
+
+async function searchProspects() {
+  if (!cfg.apollo) { alert('Introduce tu Apollo API key en Configuración primero.'); showPage('config'); return; }
+
+  document.getElementById('prosp-form').style.display = 'none';
+  document.getElementById('prosp-result').style.display = 'none';
+  document.getElementById('prosp-loading').style.display = 'block';
+
+  const msgs = ['Consultando Apollo...', 'Filtrando por ICP...', 'Enriqueciendo datos...', 'Preparando resultados...'];
+  let mi = 0;
+  document.getElementById('prosp-loading-msg').textContent = msgs[0];
+  const iv = setInterval(() => { mi=(mi+1)%msgs.length; document.getElementById('prosp-loading-msg').textContent = msgs[mi]; }, 1800);
+
+  const country  = document.getElementById('p_country').value;
+  const titles   = document.getElementById('p_title').value.split(',');
+  const empMin   = parseInt(document.getElementById('p_emp_min').value);
+  const empMax   = parseInt(document.getElementById('p_emp_max').value);
+  const industry = document.getElementById('p_industry').value.trim();
+  const limit    = parseInt(document.getElementById('p_limit').value);
+
+  const body = {
+    page: 1,
+    per_page: limit,
+    person_titles: titles,
+    person_locations: [country],
+    organization_num_employees_ranges: [`${empMin},${empMax}`]
+  };
+  if (industry) body.organization_industries = [industry];
+
+  try {
+    const apolloUrl = 'https://api.apollo.io/v1/mixed_people/search';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(apolloUrl);
+
+    const res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'X-Api-Key': cfg.apollo
+      },
+      body: JSON.stringify(body)
+    });
+
+    clearInterval(iv);
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.message || data.error || 'Error en Apollo API');
+
+    const people = data.people || [];
+    document.getElementById('prosp-loading').style.display = 'none';
+    renderProspects(people, limit);
+
+  } catch(e) {
+    clearInterval(iv);
+    document.getElementById('prosp-loading').style.display = 'none';
+    document.getElementById('prosp-form').style.display = 'block';
+    alert('Error Apollo: ' + e.message);
+  }
+}
+
+function renderProspects(people, limit) {
+  if (!people.length) {
+    document.getElementById('prosp-result').innerHTML = `
+      <div class="card" style="text-align:center;padding:32px;">
+        <p style="font-size:14px;color:var(--q-gray-mid);margin-bottom:16px;">No se encontraron prospects con estos filtros. Prueba a ampliar el rango de empleados o cambiar el sector.</p>
+        <button class="btn-secondary" onclick="resetProspecting()">← Cambiar filtros</button>
+      </div>`;
+    document.getElementById('prosp-result').style.display = 'block';
+    return;
+  }
+
+  const rows = people.map((p, i) => {
+    const name    = [p.first_name, p.last_name].filter(Boolean).join(' ') || '—';
+    const company = p.organization?.name || p.account?.name || '—';
+    const title   = p.title || '—';
+    const email   = p.email || '—';
+    const emp     = p.organization?.estimated_num_employees || p.account?.estimated_num_employees || '—';
+    const city    = p.city || p.organization?.city || '—';
+    const linkedin = p.linkedin_url || '';
+
+    const emailColor = email !== '—' ? 'var(--q-success)' : 'var(--q-gray-mid)';
+
+    return `<div class="card" style="margin-bottom:10px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-weight:600;font-size:14px;margin-bottom:2px;">${name}</div>
+          <div style="font-size:12px;color:var(--q-gray-mid);">${title} · <strong style="color:var(--q-dark);">${company}</strong></div>
+          <div style="font-size:12px;margin-top:4px;color:${emailColor};">${email}</div>
+          <div style="font-size:11px;color:var(--q-gray-mid);margin-top:2px;">${city} · ${emp} empleados</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+          <button class="btn-primary" style="padding:6px 14px;font-size:12px;width:160px;" onclick="loadToSequence(${i})">
+            Generar secuencia →
+          </button>
+          ${linkedin ? `<button class="btn-secondary" style="font-size:11px;width:160px;" onclick="window.open('${linkedin}','_blank')">Ver LinkedIn</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  window._prospectData = people;
+
+  document.getElementById('prosp-result').innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div>
+        <h2 style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;margin-bottom:2px;">${people.length} prospects encontrados</h2>
+        <span style="font-size:13px;color:var(--q-gray-mid);">Haz clic en "Generar secuencia" para cargar el prospect directamente</span>
+      </div>
+      <button class="btn-secondary" onclick="resetProspecting()">← Nueva búsqueda</button>
+    </div>
+    ${rows}`;
+  document.getElementById('prosp-result').style.display = 'block';
+}
+
+function loadToSequence(idx) {
+  const p = window._prospectData[idx];
+  if (!p) return;
+
+  showPage('sequences');
+  document.getElementById('seq-form').style.display = 'block';
+  document.getElementById('seq-result').style.display = 'none';
+
+  document.getElementById('s_fname').value    = p.first_name || '';
+  document.getElementById('s_lname').value    = p.last_name || '';
+  document.getElementById('s_company').value  = p.organization?.name || p.account?.name || '';
+  document.getElementById('s_sector').value   = p.organization?.industry || p.account?.industry || '';
+  document.getElementById('s_employees').value = p.organization?.estimated_num_employees || p.account?.estimated_num_employees || '';
+
+  const titleVal = p.title || '';
+  const roleEl = document.getElementById('s_role');
+  ['CEO','CTO','COO','Director General','Fundador'].forEach(r => {
+    if (titleVal.toLowerCase().includes(r.toLowerCase())) roleEl.value = r;
+  });
+
+  alert(`✓ ${p.first_name} ${p.last_name} de ${p.organization?.name || ''} cargado. Completa las señales de Clay y genera la secuencia.`);
+}
+
+function resetProspecting() {
+  document.getElementById('prosp-result').style.display = 'none';
+  document.getElementById('prosp-result').innerHTML = '';
+}
+
+// ============================================================
+// PROSPECCIÓN — ODOO CRM
+// ============================================================
+async function loadOdooLeads() {
+  if (!cfg.odoo_key) { alert('Introduce tu Odoo API key en Configuración primero.'); showPage('config'); return; }
+  if (!cfg.odoo_user) { alert('Introduce tu email de usuario de Odoo en Configuración primero.'); showPage('config'); return; }
+
+  document.getElementById('odoo-loading').style.display = 'block';
+  document.getElementById('odoo-result').style.display = 'none';
+
+  const limit    = parseInt(document.getElementById('odoo_limit').value);
+  const industry = document.getElementById('odoo_industry').value.trim();
+  const city     = document.getElementById('odoo_city').value.trim();
+
+  try {
+    const domain = [['type', '=', 'opportunity']];
+    if (city) domain.push(['city', 'ilike', city]);
+
+    const leadsRes = await fetch(`${cfg.odoo_url}/web/dataset/call_kw`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0', method: 'call', id: 1,
+        params: {
+          model: 'crm.lead', method: 'search_read',
+          args: [domain],
+          kwargs: {
+            fields: ['name', 'contact_name', 'email_from', 'partner_name',
+                     'planned_revenue', 'city', 'stage_id', 'function', 'phone'],
+            limit: limit,
+            order: 'write_date desc',
+            context: { lang: 'es_ES', session_id: cfg.odoo_key }
+          }
+        }
+      })
+    });
+
+    const data = await leadsRes.json();
+    document.getElementById('odoo-loading').style.display = 'none';
+
+    if (data.error) throw new Error(data.error.data?.message || data.error.message || 'Error Odoo API');
+
+    const leads = data.result || [];
+    if (!leads.length) {
+      document.getElementById('odoo-result').innerHTML = `
+        <div class="card" style="text-align:center;padding:24px;">
+          <p style="font-size:13px;color:var(--q-gray-mid);">No se encontraron leads. Prueba a ampliar los filtros.</p>
+        </div>`;
+      document.getElementById('odoo-result').style.display = 'block';
+      return;
+    }
+
+    const people = leads.map(l => ({
+      first_name:   (l.contact_name || l.name || '').split(' ')[0],
+      last_name:    (l.contact_name || l.name || '').split(' ').slice(1).join(' '),
+      title:        l.function || '',
+      email:        l.email_from || '',
+      linkedin_url: '',
+      odoo_id:      l.id,
+      city:         l.city || '',
+      stage:        l.stage_id?.[1] || '',
+      revenue:      l.planned_revenue ? `${l.planned_revenue}€` : '',
+      organization: {
+        name:                    l.partner_name || l.name || '',
+        industry:                industry || '',
+        estimated_num_employees: ''
+      }
+    }));
+
+    window._prospectData = people;
+    renderOdooLeads(people);
+
+  } catch(e) {
+    document.getElementById('odoo-loading').style.display = 'none';
+    document.getElementById('odoo-result').innerHTML = `
+      <div class="card" style="background:var(--q-danger-bg);border:1px solid #F09595;">
+        <p style="font-size:13px;color:var(--q-danger);">
+          Error al conectar con Odoo: ${e.message}<br><br>
+          Verifica que la API key y el email de usuario son correctos en Configuración.
+        </p>
+      </div>`;
+    document.getElementById('odoo-result').style.display = 'block';
+  }
+}
+
+function renderOdooLeads(people) {
+  const rows = people.map((p, i) => {
+    const name    = [p.first_name, p.last_name].filter(Boolean).join(' ') || '—';
+    const company = p.organization?.name || '—';
+    const title   = p.title || '—';
+    const email   = p.email || '—';
+    const emailColor = email !== '—' ? 'var(--q-success)' : 'var(--q-gray-mid)';
+
+    return `<div class="card" style="margin-bottom:10px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-weight:600;font-size:14px;margin-bottom:2px;">${name}</div>
+          <div style="font-size:12px;color:var(--q-gray-mid);">${title} · <strong style="color:var(--q-dark);">${company}</strong></div>
+          <div style="font-size:12px;margin-top:4px;color:${emailColor};">${email}</div>
+          <div style="font-size:11px;color:var(--q-gray-mid);margin-top:2px;">
+            ${p.city ? p.city + ' · ' : ''}
+            ${p.stage ? '<span style="background:var(--q-info-bg);color:var(--q-info);padding:1px 6px;border-radius:10px;font-size:10px;">' + p.stage + '</span>' : ''}
+            ${p.revenue ? ' · ' + p.revenue : ''}
+          </div>
+        </div>
+        <button class="btn-primary" style="padding:6px 14px;font-size:12px;width:160px;flex-shrink:0;" onclick="loadToSequence(${i})">
+          Generar secuencia →
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('odoo-result').innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div>
+        <h2 style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;margin-bottom:2px;">${people.length} leads cargados desde Odoo</h2>
+        <span style="font-size:13px;color:var(--q-gray-mid);">Clic en "Generar secuencia" para cargar el lead directamente</span>
+      </div>
+      <button class="btn-secondary" onclick="document.getElementById('odoo-result').style.display='none';">← Nueva búsqueda</button>
+    </div>
+    ${rows}`;
+  document.getElementById('odoo-result').style.display = 'block';
+}
+
+function gv(id) { return document.getElementById(id).value.trim(); }
+
+function copyText(elementId, btn) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  navigator.clipboard.writeText(el.innerText || el.textContent).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// ============================================================
+// MÓDULO 1: GENERADOR DE SECUENCIAS
+// ============================================================
+const SEQ_MSGS = ['Analizando el prospect...','Aplicando señales de Clay...','Construyendo secuencia en tu voz...','Generando los 5 emails...','Revisando tono y estructura...'];
+
+function buildSeqPrompt() {
+  return `Eres el asistente SDR de Juan, que trabaja en ORUM247, partner oficial de Odoo en España. ORUM247 vende servicios tecnológicos B2B: CRM (Odoo), sitios web, ERP, videojuegos corporativos y transformación digital.
+
+ICP de Juan: empresa española, +20 empleados, +1M€ facturación, crecimiento reciente, ticket mínimo 10.000€. Decisores: CEO o CTO.
+
+PROSPECT:
+- Empresa: ${gv('s_company') || 'sin especificar'}
+- Sector: ${gv('s_sector') || 'sin especificar'}
+- Facturación estimada: ${gv('s_revenue') || 'sin especificar'}
+- Empleados: ${gv('s_employees') || 'sin especificar'}
+- Crecimiento reciente: ${gv('s_growth') || 'no disponible'}
+- Tech stack detectado: ${gv('s_tech') || 'no disponible'}
+- Señales / noticias recientes: ${gv('s_news') || 'no disponibles'}
+- Contacto: ${gv('s_fname')} ${gv('s_lname')} — ${gv('s_role')}
+- Servicio a ofrecer: ${gv('s_service')}
+- Tono: ${gv('s_tone')}
+
+INSTRUCCIONES:
+Genera una secuencia de 5 emails de cold outbound en español. Cada email debe:
+1. Ser corto (máx 120 palabras el cuerpo)
+2. Usar las señales de Clay (growth, tech stack, noticias) para personalizar el opener del email 1 — si no hay señales, abre con una observación sobre el sector o el rol
+3. Cada follow-up añade un ángulo nuevo de valor; nunca es un simple "¿pudiste ver mi email?"
+4. El email 5 es el breakup — cortés, conciso, deja la puerta abierta
+5. Cada email tiene línea de asunto y firma "Juan | ORUM247"
+
+Devuelve SOLO este JSON, sin texto extra, sin backticks:
+{"emails":[{"num":1,"label":"Primer contacto","subject":"...","body":"..."},{"num":2,"label":"Follow-up 1","subject":"...","body":"..."},{"num":3,"label":"Follow-up 2","subject":"...","body":"..."},{"num":4,"label":"Follow-up 3","subject":"...","body":"..."},{"num":5,"label":"Breakup","subject":"...","body":"..."}]}`;
+}
+
+async function generateSequence() {
+  if (!cfg.claude) { alert('Configura tu Claude API key en la pestaña Configuración antes de generar.'); showPage('config'); return; }
+  if (!gv('s_company')) { alert('El nombre de la empresa es obligatorio.'); return; }
+  if (!gv('s_fname')) { alert('El nombre del contacto es obligatorio.'); return; }
+
+  document.getElementById('seq-form').style.display = 'none';
+  document.getElementById('seq-result').style.display = 'none';
+  document.getElementById('seq-loading').style.display = 'block';
+
+  let mi = 0;
+  document.getElementById('seq-loading-msg').textContent = SEQ_MSGS[0];
+  const iv = setInterval(() => { mi = (mi+1) % SEQ_MSGS.length; document.getElementById('seq-loading-msg').textContent = SEQ_MSGS[mi]; }, 1800);
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': cfg.claude, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 2500, messages: [{ role: 'user', content: buildSeqPrompt() }] })
+    });
+    const data = await res.json();
+    clearInterval(iv);
+    if (data.error) throw new Error(data.error.message);
+    const raw = data.content.map(b => b.text || '').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    document.getElementById('seq-loading').style.display = 'none';
+    renderSequence(parsed.emails);
+  } catch(e) {
+    clearInterval(iv);
+    document.getElementById('seq-loading').style.display = 'none';
+    document.getElementById('seq-form').style.display = 'block';
+    alert('Error al generar: ' + e.message);
+  }
+}
+
+function renderSequence(emails) {
+  const tabsHtml = emails.map((e, i) =>
+    `<button class="email-tab${i===0?' active':''}" onclick="switchEmailTab(${i},${emails.length})" id="etab-${i}">E${e.num}</button>`
+  ).join('');
+
+  const panelsHtml = emails.map((e, i) => {
+    const isBreakup = i === 4;
+    const badgeClass = isBreakup ? 'badge-noint' : i === 0 ? 'badge-interested' : 'badge-info-req';
+    return `<div id="epanel-${i}" style="display:${i===0?'block':'none'}">
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="badge ${badgeClass}">${e.label}</span>
+            <span style="font-size:12px;color:var(--q-gray-mid);">Email ${e.num} de ${emails.length}</span>
+          </div>
+          <button class="btn-sm" onclick="copyText('ebody-${i}', this)">Copiar email</button>
+        </div>
+        <p class="email-subject"><strong>Asunto:</strong> ${e.subject}</p>
+        <div class="result-box" id="ebody-${i}">${e.body}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const company = gv('s_company');
+  const name = gv('s_fname') + ' ' + gv('s_lname');
+  const role = gv('s_role');
+
+  document.getElementById('seq-result').innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div>
+        <h2 style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;margin-bottom:2px;">${company}</h2>
+        <span style="font-size:13px;color:var(--q-gray-mid);">${name} · ${role} · ${emails.length} emails generados</span>
+      </div>
+      <button class="btn-secondary" onclick="resetSequence()">← Nuevo prospect</button>
+    </div>
+    <div class="email-tabs">${tabsHtml}</div>
+    ${panelsHtml}
+    <hr />
+    <p style="font-size:11px;color:var(--q-gray-mid);line-height:1.6;">Revisa los emails antes de enviar. Contrasta siempre los datos con Apollo/Clay. El agente puede cometer errores en datos específicos de la empresa.</p>`;
+  document.getElementById('seq-result').style.display = 'block';
+}
+
+function switchEmailTab(idx, total) {
+  for (let i = 0; i < total; i++) {
+    const panel = document.getElementById('epanel-' + i);
+    const tab = document.getElementById('etab-' + i);
+    if (panel) panel.style.display = i === idx ? 'block' : 'none';
+    if (tab) tab.classList.toggle('active', i === idx);
+  }
+}
+
+function resetSequence() {
+  document.getElementById('seq-result').style.display = 'none';
+  document.getElementById('seq-form').style.display = 'block';
+}
+
+// ============================================================
+// MÓDULO 2: REPLY HANDLER
+// ============================================================
+const REPLY_MSGS = ['Analizando respuesta...', 'Clasificando intención...', 'Generando réplica en tu voz...', 'Preparando nota para Odoo...'];
+
+const INTENT_MAP = {
+  INTERESADO: ['badge-interested', 'Interesado'],
+  OBJECION: ['badge-objection', 'Objeción'],
+  PIDE_INFO: ['badge-info-req', 'Pide info'],
+  REFERRAL: ['badge-referral', 'Referral'],
+  NO_INTERESA: ['badge-noint', 'No interesa']
+};
+
+function buildReplyPrompt() {
+  return `Eres el agente SDR de Juan (ORUM247, partner Odoo España). Analiza esta respuesta de cold email.
+
+PROSPECT: ${gv('r_name')} — ${gv('r_company')}
+EMAIL EN SECUENCIA: nº ${gv('r_seq')}
+RESPUESTA RECIBIDA: "${gv('r_reply')}"
+
+INSTRUCCIONES:
+1. Clasifica la intención: INTERESADO, OBJECION, PIDE_INFO, REFERRAL, NO_INTERESA
+2. Genera una réplica corta (máx 100 palabras) en español, firmada "Juan | ORUM247"
+3. Si INTERESADO: propón reunión entre las ${cfg.slot_from} y las ${cfg.slot_to} hora España, la semana que viene
+4. Si OBJECION: reencuadra con beneficio concreto de Odoo o del servicio ofrecido
+5. Si NO_INTERESA: breakup cortés que deje la puerta abierta en 6 meses
+6. Puntúa la oportunidad del 1 al 10
+7. Genera nota breve para Odoo CRM (1-2 frases)
+8. Si hay propuesta de reunión o el prospect está interesado, genera email de aviso para Juan
+
+Devuelve SOLO este JSON sin backticks:
+{"intent":"INTERESADO|OBJECION|PIDE_INFO|REFERRAL|NO_INTERESA","score":7,"score_reason":"motivo breve","reply":"texto del email","meeting_proposed":true,"meeting_slot":"martes 17 de junio a las 15:00h (hora España)","odoo_note":"nota para CRM","aviso_subject":"asunto del email de aviso","aviso_body":"cuerpo del email de aviso para Juan"}`;
+}
+
+async function handleReply() {
+  if (!cfg.claude) { alert('Configura tu Claude API key en la pestaña Configuración.'); showPage('config'); return; }
+  if (!gv('r_name') || !gv('r_company')) { alert('Introduce el nombre y la empresa del prospect.'); return; }
+  if (!gv('r_reply')) { alert('Pega la respuesta recibida.'); return; }
+
+  document.getElementById('reply-form').style.display = 'none';
+  document.getElementById('reply-result').style.display = 'none';
+  document.getElementById('reply-loading').style.display = 'block';
+
+  let mi = 0;
+  document.getElementById('reply-loading-msg').textContent = REPLY_MSGS[0];
+  const iv = setInterval(() => { mi = (mi+1) % REPLY_MSGS.length; document.getElementById('reply-loading-msg').textContent = REPLY_MSGS[mi]; }, 1600);
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': cfg.claude, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1200, messages: [{ role: 'user', content: buildReplyPrompt() }] })
+    });
+    const data = await res.json();
+    clearInterval(iv);
+    if (data.error) throw new Error(data.error.message);
+    const raw = data.content.map(b => b.text || '').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
+
+    sessionLog.push({
+      ts: new Date().toISOString(),
+      name: gv('r_name'), company: gv('r_company'),
+      email: gv('r_email'), intent: parsed.intent,
+      score: parsed.score, note: parsed.odoo_note
+    });
+
+    document.getElementById('reply-loading').style.display = 'none';
+    renderReplyResult(parsed);
+
+    if (cfg.odoo_key && cfg.odoo_user) updateOdoo(gv('r_name'), gv('r_company'), gv('r_email'), parsed.odoo_note, parsed.intent);
+
+  } catch(e) {
+    clearInterval(iv);
+    document.getElementById('reply-loading').style.display = 'none';
+    document.getElementById('reply-form').style.display = 'block';
+    alert('Error: ' + e.message);
+  }
+}
+
+function renderReplyResult(p) {
+  const [badgeClass, badgeLabel] = INTENT_MAP[p.intent] || ['badge-info-req', p.intent];
+  const scoreColor = p.score >= 7 ? 'var(--q-success)' : p.score >= 4 ? 'var(--q-warning)' : 'var(--q-danger)';
+
+  let meetingBanner = '';
+  if (p.meeting_proposed) {
+    meetingBanner = `<div class="alert alert-meeting">
+      <span style="font-size:20px;">📅</span>
+      <div><strong>Reunión propuesta</strong> — ${p.meeting_slot}<br><span style="font-size:12px;">Se ha generado el email de aviso para ti más abajo</span></div>
+    </div>`;
+  }
+
+  const odooBanner = (cfg.odoo_key && cfg.odoo_user)
+    ? `<div class="alert alert-odoo"><span>🔗</span><div><strong>Odoo</strong> — Actualizando registro de ${gv('r_company')}...</div></div>`
+    : `<div class="alert alert-warn"><span>⚠️</span><div>Configura la Odoo API key para actualizar el CRM automáticamente</div></div>`;
+
+  let avisoBlock = '';
+  if (p.meeting_proposed || p.intent === 'INTERESADO') {
+    avisoBlock = `<hr />
+    <div class="card-title" style="margin-top:4px;">Email de aviso — para enviarte a ti</div>
+    <div class="copy-row">
+      <span>Para: ${cfg.myemail} · Asunto: ${p.aviso_subject}</span>
+      <button class="btn-sm" onclick="copyText('aviso-body', this)">Copiar</button>
+    </div>
+    <div class="result-box" id="aviso-body">${p.aviso_body}</div>`;
+  }
+
+  document.getElementById('reply-result').innerHTML = `
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+        <span class="badge ${badgeClass}">${badgeLabel}</span>
+        <span style="font-size:13px;color:var(--q-gray-mid);">${gv('r_name')} · ${gv('r_company')}</span>
+        <span style="margin-left:auto;font-family:Montserrat,sans-serif;font-weight:700;font-size:24px;color:${scoreColor};">${p.score}<span style="font-size:12px;color:var(--q-gray-mid);">/10</span></span>
+      </div>
+      <p style="font-size:12px;color:var(--q-gray-mid);margin-bottom:14px;">${p.score_reason}</p>
+      ${meetingBanner}
+      ${odooBanner}
+      <hr />
+      <div class="copy-row">
+        <div class="card-title" style="margin:0;">Réplica generada</div>
+        <button class="btn-sm" onclick="copyText('reply-gen', this)">Copiar</button>
+      </div>
+      <div class="result-box" id="reply-gen" style="margin-top:6px;">${p.reply}</div>
+      <hr />
+      <div class="card-title">Nota registrada en Odoo</div>
+      <div class="result-box" style="font-size:12px;margin-top:6px;">${p.odoo_note}</div>
+      ${avisoBlock}
+      <hr />
+      <button class="btn-secondary" style="width:100%;" onclick="resetReply()">← Analizar otra respuesta</button>
+    </div>`;
+  document.getElementById('reply-result').style.display = 'block';
+}
+
+function resetReply() {
+  document.getElementById('reply-result').style.display = 'none';
+  document.getElementById('reply-form').style.display = 'block';
+  ['r_name','r_company','r_email','r_reply'].forEach(id => document.getElementById(id).value = '');
+}
+
+async function updateOdoo(name, company, email, note, intent) {
+  try {
+    await fetch(`${cfg.odoo_url}/web/dataset/call_kw`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0', method: 'call',
+        params: { model: 'crm.lead', method: 'create',
+          args: [{ name: `SDR - ${company}`, contact_name: name, email_from: email || '', description: note, tag_ids: [] }],
+          kwargs: { context: { default_type: 'opportunity' } }
+        }
+      })
+    });
+  } catch(e) { console.log('Odoo update note:', e.message); }
+}
+
+// ============================================================
+// MÓDULO 3: REPORTE DEL DÍA
+// ============================================================
+async function generateReport() {
+  if (!cfg.claude) { alert('Configura tu Claude API key en la pestaña Configuración.'); showPage('config'); return; }
+
+  document.getElementById('report-intro').style.display = 'none';
+  document.getElementById('report-loading').style.display = 'block';
+
+  const today = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const replies = sessionLog.filter(l => ['INTERESADO','OBJECION','PIDE_INFO','REFERRAL'].includes(l.intent));
+  const allContacts = sessionLog.map(l => `${l.name} (${l.company})`);
+
+  const prompt = `Genera un reporte de fin de día para Juan (SDR de ORUM247) — ${today}.
+
+RESPUESTAS RECIBIDAS HOY (analiza cada una en detalle):
+${replies.length > 0 ? replies.map(r => `- ${r.name} (${r.company}): intención=${r.intent}, score=${r.score}/10, nota="${r.note}"`).join('\n') : '- Sin respuestas registradas hoy'}
+
+TODOS LOS CONTACTOS DE HOY:
+${allContacts.length > 0 ? allContacts.join('\n') : '- Sin actividad registrada hoy'}
+
+INSTRUCCIONES:
+1. Haz hincapié especial en las respuestas recibidas — evalúa si tienen buena o mala pinta con criterio comercial, sé directo
+2. Los nuevos contactos sin respuesta simplemente lístalos
+3. Destaca oportunidades calientes (score ≥ 7) con criterio claro
+4. Tono ejecutivo, directo, en español
+5. Genera email de reporte para enviar a juan@infinityapps.es
+
+Devuelve SOLO este JSON sin backticks:
+{"resumen":"2-3 frases ejecutivas del día","respuestas":[{"name":"...","company":"...","intent":"...","score":7,"valoracion":"buena/regular/mala pinta — motivo"}],"calientes":["nombre (empresa) — motivo"],"nuevos_contactos":["nombre (empresa)"],"email_subject":"...","email_body":"..."}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': cfg.claude, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    const raw = data.content.map(b => b.text || '').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    document.getElementById('report-loading').style.display = 'none';
+    renderReport(parsed, today);
+  } catch(e) {
+    document.getElementById('report-loading').style.display = 'none';
+    document.getElementById('report-intro').style.display = 'block';
+    alert('Error: ' + e.message);
+  }
+}
+
+function renderReport(p, today) {
+  const totalContacts = sessionLog.length;
+  const totalReplies = (p.respuestas || []).length;
+  const totalHot = (p.calientes || []).length;
+
+  const repliesHtml = (p.respuestas || []).map(r => {
+    const [bc, bl] = INTENT_MAP[r.intent] || ['badge-info-req', r.intent];
+    const scoreColor = r.score >= 7 ? 'var(--q-success)' : r.score >= 4 ? 'var(--q-warning)' : 'var(--q-danger)';
+    const emoji = r.score >= 7 ? '🔥' : r.score >= 4 ? '🟡' : '❄️';
+    return `<div class="report-row">
+      <span class="report-emoji">${emoji}</span>
+      <div style="flex:1;">
+        <div style="font-weight:600;">${r.name} <span style="font-weight:400;color:var(--q-gray-mid);">· ${r.company}</span> <span class="badge ${bc}" style="font-size:10px;">${bl}</span></div>
+        <div style="font-size:12px;color:var(--q-gray-mid);margin-top:3px;">${r.valoracion}</div>
+      </div>
+      <span style="font-family:Montserrat,sans-serif;font-weight:700;font-size:18px;color:${scoreColor};">${r.score}<span style="font-size:11px;color:var(--q-gray-mid);">/10</span></span>
+    </div>`;
+  }).join('') || '<p style="font-size:13px;color:var(--q-gray-mid);">Sin respuestas registradas hoy.</p>';
+
+  const calHtml = (p.calientes || []).map(c => `<div style="font-size:13px;padding:6px 0;border-bottom:1px solid var(--q-border);">🔥 ${c}</div>`).join('') || '<p style="font-size:13px;color:var(--q-gray-mid);">Sin oportunidades calientes hoy.</p>';
+  const newHtml = (p.nuevos_contactos || []).map(c => `<div style="font-size:13px;padding:4px 0;color:var(--q-gray-mid);">· ${c}</div>`).join('') || '<p style="font-size:13px;color:var(--q-gray-mid);">Sin nuevos contactos registrados.</p>';
+
+  document.getElementById('report-result').innerHTML = `
+    <div style="margin-bottom:20px;">
+      <h2 style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;margin-bottom:4px;">Cierre de jornada — ${today}</h2>
+      <p style="font-size:13px;color:var(--q-gray-mid);">${p.resumen}</p>
+    </div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-val">${totalContacts}</div><div class="metric-lbl">Contactos</div></div>
+      <div class="metric-card"><div class="metric-val">${totalReplies}</div><div class="metric-lbl">Respuestas</div></div>
+      <div class="metric-card"><div class="metric-val">${totalHot}</div><div class="metric-lbl">Oportunidades</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Respuestas recibidas hoy — valoración</div>
+      ${repliesHtml}
+    </div>
+    <div class="card">
+      <div class="card-title">Oportunidades calientes</div>
+      ${calHtml}
+    </div>
+    <div class="card">
+      <div class="card-title">Nuevos contactos enviados</div>
+      ${newHtml}
+    </div>
+    <hr />
+    <div class="copy-row">
+      <span style="font-size:12px;color:var(--q-gray-mid);">Email reporte → ${cfg.myemail} · Asunto: ${p.email_subject}</span>
+      <button class="btn-sm" onclick="copyText('report-email-body', this)">Copiar email</button>
+    </div>
+    <div class="result-box" id="report-email-body" style="margin-top:6px;">${p.email_body}</div>
+    <hr />
+    <button class="btn-secondary" style="width:100%;" onclick="resetReport()">← Nuevo reporte</button>`;
+  document.getElementById('report-result').style.display = 'block';
+}
+
+function resetReport() {
+  document.getElementById('report-result').style.display = 'none';
+  document.getElementById('report-result').innerHTML = '';
+  document.getElementById('report-intro').style.display = 'block';
+}
+</script>
+
+
+</body></html>
